@@ -1,10 +1,11 @@
 namespace ControleDeBar
 {
-    public partial class TelaPrincipalForms : Form
+    public partial class TelaPrincipalForm : Form
     {
-        public TelaPrincipalForms()
+        public TelaPrincipalForm()
         {
             InitializeComponent();
         }
+
     }
 }
