@@ -32,6 +32,7 @@
             menuToolStripMenuItem = new ToolStripMenuItem();
             garçomToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
+            pedidosToolStripMenuItem1 = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -39,8 +40,8 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             btnConfirmar = new ToolStripButton();
+            lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            pedidosToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -69,12 +70,19 @@
             garçomToolStripMenuItem.Name = "garçomToolStripMenuItem";
             garçomToolStripMenuItem.Size = new Size(224, 32);
             garçomToolStripMenuItem.Text = "Garçom";
+            garçomToolStripMenuItem.Click += garçomToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem
             // 
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
             pedidosToolStripMenuItem.Size = new Size(224, 32);
             pedidosToolStripMenuItem.Text = "Produtos";
+            // 
+            // pedidosToolStripMenuItem1
+            // 
+            pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
+            pedidosToolStripMenuItem1.Size = new Size(224, 32);
+            pedidosToolStripMenuItem1.Text = "Pedidos";
             // 
             // statusStrip1
             // 
@@ -97,7 +105,7 @@
             // 
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, btnConfirmar });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, btnConfirmar, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 36);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1402, 27);
@@ -112,6 +120,7 @@
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(29, 24);
             btnAdicionar.Text = "Adicionar";
+            btnAdicionar.Click += btnAdicionar_Click_1;
             // 
             // btnEditar
             // 
@@ -121,6 +130,7 @@
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(29, 24);
             btnEditar.Text = "Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -130,6 +140,7 @@
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(29, 24);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnConfirmar
             // 
@@ -140,6 +151,11 @@
             btnConfirmar.Size = new Size(29, 24);
             btnConfirmar.Text = "Confirmar Entrega";
             // 
+            // lblTipoCadastro
+            // 
+            lblTipoCadastro.Name = "lblTipoCadastro";
+            lblTipoCadastro.Size = new Size(0, 24);
+            // 
             // pnlRegistros
             // 
             pnlRegistros.Dock = DockStyle.Fill;
@@ -148,13 +164,7 @@
             pnlRegistros.Size = new Size(1402, 612);
             pnlRegistros.TabIndex = 4;
             // 
-            // pedidosToolStripMenuItem1
-            // 
-            pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
-            pedidosToolStripMenuItem1.Size = new Size(224, 32);
-            pedidosToolStripMenuItem1.Text = "Pedidos";
-            // 
-            // TelaPrincipalForms
+            // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -167,8 +177,9 @@
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaPrincipalForms";
+            Name = "TelaPrincipalForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Bar";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -195,5 +206,6 @@
         private ToolStripButton btnConfirmar;
         private Panel pnlRegistros;
         private ToolStripMenuItem pedidosToolStripMenuItem1;
+        private ToolStripLabel lblTipoCadastro;
     }
 }
