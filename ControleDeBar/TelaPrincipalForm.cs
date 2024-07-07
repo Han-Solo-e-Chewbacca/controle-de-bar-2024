@@ -1,7 +1,10 @@
+using ControleDeBar.Dominio.Modulo_Produtos;
 using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.Infra.Orm.Compartilhado;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
+using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.ModuloGarcom;
+using ControleDeBar.ModuloProduto;
 using GeradorDeTestes.Dominio.Compartilhado;
 using GeradorDeTestes.WinApp.Compartilhado;
 
@@ -14,6 +17,7 @@ namespace ControleDeBar
         ControladorBase controlador;
 
         IRepositorioGarcom repositorioGarcom;
+        IRepositorioProduto repositorioProduto;
 
         public TelaPrincipalForm()
         {
@@ -24,6 +28,7 @@ namespace ControleDeBar
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
+            repositorioProduto = new RepositorioProdutoEmOrm(dbContext);
 
         }
 
@@ -87,6 +92,13 @@ namespace ControleDeBar
         private void garçomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorGarcom(repositorioGarcom);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void produtos_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorProduto(repositorioProduto);
 
             ConfigurarTelaPrincipal(controlador);
         }

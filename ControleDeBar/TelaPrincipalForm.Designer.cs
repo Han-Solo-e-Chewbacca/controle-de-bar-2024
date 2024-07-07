@@ -31,7 +31,7 @@
             menuStrip1 = new MenuStrip();
             menuToolStripMenuItem = new ToolStripMenuItem();
             garçomToolStripMenuItem = new ToolStripMenuItem();
-            pedidosToolStripMenuItem = new ToolStripMenuItem();
+            produtos = new ToolStripMenuItem();
             pedidosToolStripMenuItem1 = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
@@ -59,7 +59,7 @@
             // 
             // menuToolStripMenuItem
             // 
-            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garçomToolStripMenuItem, pedidosToolStripMenuItem, pedidosToolStripMenuItem1 });
+            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garçomToolStripMenuItem, produtos, pedidosToolStripMenuItem1 });
             menuToolStripMenuItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             menuToolStripMenuItem.Size = new Size(76, 32);
@@ -72,11 +72,12 @@
             garçomToolStripMenuItem.Text = "Garçom";
             garçomToolStripMenuItem.Click += garçomToolStripMenuItem_Click;
             // 
-            // pedidosToolStripMenuItem
+            // produtos
             // 
-            pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(224, 32);
-            pedidosToolStripMenuItem.Text = "Produtos";
+            produtos.Name = "produtos";
+            produtos.Size = new Size(224, 32);
+            produtos.Text = "Produtos";
+            produtos.Click += produtos_Click;
             // 
             // pedidosToolStripMenuItem1
             // 
@@ -196,7 +197,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem menuToolStripMenuItem;
         private ToolStripMenuItem garçomToolStripMenuItem;
-        private ToolStripMenuItem pedidosToolStripMenuItem;
+        private ToolStripMenuItem produtos;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabelPrincipal;
         private ToolStrip toolStrip1;
