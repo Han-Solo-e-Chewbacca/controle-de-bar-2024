@@ -130,9 +130,9 @@ namespace ControleDeBar.ModuloGarcom
 
         public override void CarregarRegistros()
         {
-            List<Garcom> disciplinas = repositorioGarcom.SelecionarTodos();
+            List<Garcom> garcons = repositorioGarcom.SelecionarTodos();
 
-            tabelaGarcom.AtualizarRegistros(disciplinas);
+            tabelaGarcom.AtualizarRegistros(garcons);
         }
     }
 }

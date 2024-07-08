@@ -1,6 +1,7 @@
 ﻿
 using ControleDeBar.Dominio.Modulo_Produtos;
 using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Dominio.ModuloProdutos;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,6 +18,7 @@ namespace ControleDeBar.Infra.Orm.Compartilhado
     {
         public DbSet<Garcom> Garcons { get; internal set; }
         public DbSet<Produto> Produtos { get; internal set; }
+        public DbSet<Pedido> Pedidos { get; internal set; }
         
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -60,92 +62,30 @@ namespace ControleDeBar.Infra.Orm.Compartilhado
 
             });
 
+        modelBuilder.Entity<Pedido>(pedidoBuilder =>
+            {
+                pedidoBuilder.ToTable("TBPedido");
+                pedidoBuilder.Property(t => t.Id).IsRequired(true).ValueGeneratedOnAdd();
+                pedidoBuilder.Property(t => t.Mesa).HasColumnType("varchar(250)").IsRequired();
+     
+                pedidoBuilder.HasOne(t => t.Garcom)
+                    .WithMany()
+                    .IsRequired()
+                    .HasForeignKey("Garcom_Id")
+                    .HasConstraintName("FK_TBPedido_TBGarcom")
+                    .OnDelete(DeleteBehavior.NoAction);
 
+                
 
+                pedidoBuilder.HasMany(t => t.Produtos)
+                    .WithMany()
+                    .UsingEntity(x => x.ToTable("TBPedido_TBProduto"));
 
-
-
-            //modelBuilder.Entity<Materia>(materiaBuilder =>
-            //{
-            //    materiaBuilder.ToTable("TBMateria");
-            //    materiaBuilder.Property(m => m.Id)
-            //        .IsRequired()
-            //        .ValueGeneratedOnAdd();
-
-            //    materiaBuilder.Property(m => m.Nome)
-            //       .IsRequired()
-            //       .HasColumnType("varchar(250)");
-
-            //    materiaBuilder.Property(m => m.Serie)
-            //        .IsRequired()
-            //        .HasConversion<int>();
-
-            //    materiaBuilder.HasOne(m => m.Disciplina)
-            //        .WithMany(d => d.Materias)
-            //        .IsRequired()
-            //        .HasForeignKey("Disciplina_Id")
-            //        .HasConstraintName("FK_TBMateria_TBDisciplina")
-            //        .OnDelete(DeleteBehavior.Restrict);
-            //});
-
-            //modelBuilder.Entity<Questao>(questaoBuilder =>
-            //{
-
-            //    questaoBuilder.ToTable("TBQuestao");
-            //    questaoBuilder.Property(q => q.Id).IsRequired().ValueGeneratedOnAdd();
-            //    questaoBuilder.Property(q => q.Enunciado).HasColumnType("varchar(500)").IsRequired();
-            //    questaoBuilder.Property(q => q.UtilizadaEmTeste).IsRequired();
-
-            //    questaoBuilder.HasOne(q => q.Materia)
-            //        .WithMany(m => m.Questoes)
-            //        .IsRequired()
-            //        .HasForeignKey("Materia_Id")
-            //        .HasConstraintName("FK_TBQuestao_TBMateria")
-            //        .OnDelete(DeleteBehavior.Restrict);
-            //});
-
-            //modelBuilder.Entity<Alternativa>(alternativaBuilder =>
-            //{
-            //    alternativaBuilder.ToTable("TBAlternativa");
-            //    alternativaBuilder.Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
-            //    alternativaBuilder.Property(a => a.Letra).IsRequired();
-            //    alternativaBuilder.Property(a => a.Resposta).HasColumnType("varchar(100)").IsRequired();
-            //    alternativaBuilder.Property(a => a.Correta).IsRequired();
-
-            //    alternativaBuilder.HasOne(a => a.Questao)
-            //        .WithMany(q => q.Alternativas)
-            //        .IsRequired()
-            //        .HasForeignKey("Questao_Id")
-            //        .HasConstraintName("FK_TBAlternativa_TBQuestao")
-            //        .OnDelete(DeleteBehavior.Cascade);
-            //});
-
-            //modelBuilder.Entity<Teste>(testeBuilder =>
-            //{
-            //    testeBuilder.ToTable("TBTeste");
-            //    testeBuilder.Property(t => t.Id).IsRequired(true).ValueGeneratedOnAdd();
-            //    testeBuilder.Property(t => t.Titulo).HasColumnType("varchar(250)").IsRequired();
-            //    testeBuilder.Property(t => t.DataGeracao).IsRequired();
-            //    testeBuilder.Property(t => t.ProvaRecuperacao).IsRequired();
-
-            //    testeBuilder.HasOne(t => t.Disciplina)
-            //        .WithMany()
-            //        .IsRequired()
-            //        .HasForeignKey("Disciplina_Id")
-            //        .HasConstraintName("FK_TBTeste_TBDisciplina")
-            //        .OnDelete(DeleteBehavior.NoAction);
-
-            //    testeBuilder.HasOne(t => t.Materia)
-            //        .WithMany()
-            //        .IsRequired(false)
-            //        .HasForeignKey("Materia_Id")
-            //        .HasConstraintName("FK_TBTeste_TBMateria")
-            //    .OnDelete(DeleteBehavior.NoAction);
-
-            //    testeBuilder.HasMany(t => t.Questoes)
-            //        .WithMany()
-            //        .UsingEntity(x => x.ToTable("TBTeste_TBQuestao"));
-            //});
+                pedidoBuilder.Property(d => d.Total)
+                .IsRequired().HasColumnType("decimal(18, 2)");
+                pedidoBuilder.Property(t => t.Data).HasColumnType("datetime").IsRequired();
+                pedidoBuilder.Property(t => t.Situacao).HasColumnType("varchar(10)").IsRequired();
+            });
 
             base.OnModelCreating(modelBuilder);
         }

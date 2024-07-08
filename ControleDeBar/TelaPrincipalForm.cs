@@ -1,9 +1,12 @@
 using ControleDeBar.Dominio.Modulo_Produtos;
 using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Infra.Orm.Compartilhado;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
+using ControleDeBar.Infra.Orm.ModuloPedido;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.ModuloGarcom;
+using ControleDeBar.ModuloPedidos;
 using ControleDeBar.ModuloProduto;
 using GeradorDeTestes.Dominio.Compartilhado;
 using GeradorDeTestes.WinApp.Compartilhado;
@@ -18,6 +21,7 @@ namespace ControleDeBar
 
         IRepositorioGarcom repositorioGarcom;
         IRepositorioProduto repositorioProduto;
+        IRepositorioPedido repositorioPedido;
 
         public TelaPrincipalForm()
         {
@@ -29,6 +33,7 @@ namespace ControleDeBar
 
             repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
             repositorioProduto = new RepositorioProdutoEmOrm(dbContext);
+            repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
 
         }
 
@@ -99,6 +104,13 @@ namespace ControleDeBar
         private void produtos_Click(object sender, EventArgs e)
         {
             controlador = new ControladorProduto(repositorioProduto);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void pedidosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorPedido(repositorioPedido,repositorioGarcom,repositorioProduto);
 
             ConfigurarTelaPrincipal(controlador);
         }

@@ -84,6 +84,7 @@
             pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
             pedidosToolStripMenuItem1.Size = new Size(224, 32);
             pedidosToolStripMenuItem1.Text = "Pedidos";
+            pedidosToolStripMenuItem1.Click += pedidosToolStripMenuItem1_Click;
             // 
             // statusStrip1
             // 

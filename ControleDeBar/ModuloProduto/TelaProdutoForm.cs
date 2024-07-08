@@ -15,7 +15,7 @@ namespace ControleDeBar.ModuloProduto
 {
     public partial class TelaProdutoForm : Form
     {
-        public TelaProdutoForm(List<Produto> produtosCadastrados )
+        public TelaProdutoForm(List<Produto> produtosCadastrados)
         {
             InitializeComponent();
             this.produtosCadastrados = produtosCadastrados;
@@ -37,7 +37,7 @@ namespace ControleDeBar.ModuloProduto
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            produto = new Produto(txtNome.Text,txtPreco.Value);
+            produto = new Produto(txtNome.Text, txtPreco.Value);
 
             List<string> erros = produto.Validar();
 
@@ -55,6 +55,11 @@ namespace ControleDeBar.ModuloProduto
         private bool ProdutoTemNomeDuplicado()
         {
             return produtosCadastrados.Any(d => d.Nome == produto.Nome);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
