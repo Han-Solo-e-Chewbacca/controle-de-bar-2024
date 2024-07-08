@@ -28,6 +28,7 @@ namespace ControleDeBar.Dominio.ModuloPedidos
             Data = data;
             Situacao = situacao;
         }
+        public Pedido() { }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
