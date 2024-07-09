@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,38 +10,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControleDeBar.ModuloGarcom
+namespace ControleDeBar.ModuloMesa
 {
-    public partial class TelaGarcomForm : Form
+    public partial class TelaMesaForm : Form
     {
-        public TelaGarcomForm(List<Garcom> garconsCadastrados)
+        public TelaMesaForm(List<Mesa> mesasCadastradas)
         {
             InitializeComponent();
-
-            this.garconsCadastrados = garconsCadastrados;
+            this.mesasCadastradas = mesasCadastradas;
         }
-        public Garcom Garcom
+        public Mesa Mesa
         {
-            get => garcom;
+            get => mesa;
             set
             {
                 txtId.Text = value.Id.ToString();
-                txtNome.Text = value.Nome;
+                txtMesa.Text = value.Numero;
             }
         }
-        private Garcom garcom;
+        private Mesa mesa;
 
 
-        private List<Garcom> garconsCadastrados;
+        private List<Mesa> mesasCadastradas;
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            garcom = new Garcom(txtNome.Text);
+            mesa = new Mesa(txtMesa.Text+" "+numericUpDown1.Value);
 
-            List<string> erros = garcom.Validar();
+            List<string> erros = mesa.Validar();
 
             if (GarcomTemNomeDuplicado())
-                erros.Add("Já existe um garçom com este nome cadastrada, tente utilizar outro!");
+                erros.Add("Já existe uma mesa com este nome cadastrado, tente utilizar outro!");
 
             if (erros.Count > 0)
             {
@@ -52,14 +52,8 @@ namespace ControleDeBar.ModuloGarcom
 
         private bool GarcomTemNomeDuplicado()
         {
-            return garconsCadastrados.Any(d => d.Nome == garcom.Nome);
+            return mesasCadastradas.Any(d => d.Numero == mesa.Numero);
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-
-

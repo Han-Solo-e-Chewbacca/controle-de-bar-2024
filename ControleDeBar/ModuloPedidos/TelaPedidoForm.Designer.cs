@@ -34,11 +34,9 @@
             label4 = new Label();
             cbMesa = new ComboBox();
             cbGarcom = new ComboBox();
-            groupBox1 = new GroupBox();
-            listProdutos = new CheckedListBox();
             btnCancelar = new Button();
             btnGravar = new Button();
-            groupBox1.SuspendLayout();
+            listProdutos = new CheckedListBox();
             SuspendLayout();
             // 
             // txtId
@@ -99,27 +97,6 @@
             cbGarcom.Size = new Size(151, 28);
             cbGarcom.TabIndex = 7;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(listProdutos);
-            groupBox1.Location = new Point(23, 161);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(728, 324);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Pedidos:";
-            // 
-            // listProdutos
-            // 
-            listProdutos.Dock = DockStyle.Fill;
-            listProdutos.FormattingEnabled = true;
-            listProdutos.Items.AddRange(new object[] { "" });
-            listProdutos.Location = new Point(3, 23);
-            listProdutos.Name = "listProdutos";
-            listProdutos.Size = new Size(722, 298);
-            listProdutos.TabIndex = 0;
-            listProdutos.SelectedIndexChanged += checkedListBox1_SelectedIndexChanged;
-            // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
@@ -141,14 +118,23 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
+            // listProdutos
+            // 
+            listProdutos.FormattingEnabled = true;
+            listProdutos.Location = new Point(36, 185);
+            listProdutos.Name = "listProdutos";
+            listProdutos.Size = new Size(717, 290);
+            listProdutos.TabIndex = 11;
+            listProdutos.SelectedIndexChanged += listProdutos_SelectedIndexChanged;
+            // 
             // TelaPedidoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(787, 555);
+            Controls.Add(listProdutos);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
-            Controls.Add(groupBox1);
             Controls.Add(cbGarcom);
             Controls.Add(cbMesa);
             Controls.Add(label4);
@@ -161,7 +147,6 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Pedido";
-            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -174,9 +159,8 @@
         private Label label4;
         private ComboBox cbMesa;
         private ComboBox cbGarcom;
-        private GroupBox groupBox1;
-        private CheckedListBox listProdutos;
         private Button btnCancelar;
         private Button btnGravar;
+        private CheckedListBox listProdutos;
     }
 }

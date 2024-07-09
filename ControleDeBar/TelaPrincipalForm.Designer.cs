@@ -42,6 +42,7 @@
             btnConfirmar = new ToolStripButton();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
+            mesasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -59,7 +60,7 @@
             // 
             // menuToolStripMenuItem
             // 
-            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garçomToolStripMenuItem, produtos, pedidosToolStripMenuItem1 });
+            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garçomToolStripMenuItem, produtos, pedidosToolStripMenuItem1, mesasToolStripMenuItem });
             menuToolStripMenuItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             menuToolStripMenuItem.Size = new Size(76, 32);
@@ -166,6 +167,13 @@
             pnlRegistros.Size = new Size(1402, 612);
             pnlRegistros.TabIndex = 4;
             // 
+            // mesasToolStripMenuItem
+            // 
+            mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
+            mesasToolStripMenuItem.Size = new Size(224, 32);
+            mesasToolStripMenuItem.Text = "Mesas";
+            mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -209,5 +217,6 @@
         private Panel pnlRegistros;
         private ToolStripMenuItem pedidosToolStripMenuItem1;
         private ToolStripLabel lblTipoCadastro;
+        private ToolStripMenuItem mesasToolStripMenuItem;
     }
 }

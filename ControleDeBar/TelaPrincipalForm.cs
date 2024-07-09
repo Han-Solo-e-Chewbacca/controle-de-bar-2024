@@ -1,11 +1,14 @@
 using ControleDeBar.Dominio.Modulo_Produtos;
 using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Infra.Orm.Compartilhado;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
+using ControleDeBar.Infra.Orm.ModuloMesa;
 using ControleDeBar.Infra.Orm.ModuloPedido;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.ModuloGarcom;
+using ControleDeBar.ModuloMesa;
 using ControleDeBar.ModuloPedidos;
 using ControleDeBar.ModuloProduto;
 using GeradorDeTestes.Dominio.Compartilhado;
@@ -22,6 +25,7 @@ namespace ControleDeBar
         IRepositorioGarcom repositorioGarcom;
         IRepositorioProduto repositorioProduto;
         IRepositorioPedido repositorioPedido;
+        IRepositorioMesa repositorioMesa;
 
         public TelaPrincipalForm()
         {
@@ -34,6 +38,7 @@ namespace ControleDeBar
             repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
             repositorioProduto = new RepositorioProdutoEmOrm(dbContext);
             repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
+            repositorioMesa = new RepositorioMesaEmOrm(dbContext);
 
         }
 
@@ -110,7 +115,14 @@ namespace ControleDeBar
 
         private void pedidosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorPedido(repositorioPedido,repositorioGarcom,repositorioProduto);
+            controlador = new ControladorPedido(repositorioPedido, repositorioGarcom, repositorioProduto,repositorioMesa);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void mesasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorMesa(repositorioMesa);
 
             ConfigurarTelaPrincipal(controlador);
         }

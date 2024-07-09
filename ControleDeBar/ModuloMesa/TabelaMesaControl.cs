@@ -1,5 +1,5 @@
-﻿
-using ControleDeBar.Dominio.ModuloGarcom;
+﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using GeradorDeTestes.WinApp.Compartilhado.Extensions;
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ControleDeBar.Dominio.Modulo_Produtos;
-using ControleDeBar.Dominio.ModuloProdutos;
 
-namespace ControleDeBar.ModuloProduto
+namespace ControleDeBar.ModuloMesa
 {
-    public partial class TabelaProdutoControl : UserControl
+    public partial class TabelaMesaControl : UserControl
     {
-        public TabelaProdutoControl()
+        public TabelaMesaControl()
         {
             InitializeComponent();
             grid.Columns.AddRange(ObterColunas());
@@ -27,12 +25,12 @@ namespace ControleDeBar.ModuloProduto
             grid.Columns[0].Width = 20;
         }
 
-        public void AtualizarRegistros(List<Produto> produtos)
+        public void AtualizarRegistros(List<Mesa> mesas)
         {
             grid.Rows.Clear();
 
-            foreach (Produto g in produtos)
-                grid.Rows.Add(g.Id, g.Nome, g.Preco);
+            foreach (Mesa g in mesas)
+                grid.Rows.Add(g.Id, g.Numero);
         }
 
         public int ObterRegistroSelecionado()
@@ -45,8 +43,7 @@ namespace ControleDeBar.ModuloProduto
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Preco", HeaderText = "Preço" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Número" }
             };
         }
 

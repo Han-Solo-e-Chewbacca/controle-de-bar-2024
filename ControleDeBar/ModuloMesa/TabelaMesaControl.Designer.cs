@@ -1,6 +1,6 @@
-﻿namespace ControleDeBar.ModuloProduto
+﻿namespace ControleDeBar.ModuloMesa
 {
-    partial class TabelaProdutoControl
+    partial class TabelaMesaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -39,17 +39,17 @@
             grid.Location = new Point(0, 0);
             grid.Name = "grid";
             grid.RowHeadersWidth = 51;
-            grid.Size = new Size(850, 441);
+            grid.Size = new Size(601, 346);
             grid.TabIndex = 0;
             grid.CellContentClick += grid_CellContentClick;
             // 
-            // TabelaProdutoControl
+            // TabelaMesaControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaProdutoControl";
-            Size = new Size(850, 441);
+            Name = "TabelaMesaControl";
+            Size = new Size(601, 346);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

@@ -1,5 +1,6 @@
 ﻿using ControleDeBar.Dominio.Modulo_Produtos;
 using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Dominio.ModuloProdutos;
 using GeradorDeTestes.WinApp.Compartilhado;
@@ -26,12 +27,14 @@ namespace ControleDeBar.ModuloPedidos
         IRepositorioPedido repositorioPedido;
         IRepositorioGarcom repositorioGarcom;
         IRepositorioProduto repositorioProduto;
+        IRepositorioMesa repositorioMesa;
 
-        public ControladorPedido(IRepositorioPedido repositorioPedido,IRepositorioGarcom repositorioGarcom,IRepositorioProduto repositorioProduto)
+        public ControladorPedido(IRepositorioPedido repositorioPedido,IRepositorioGarcom repositorioGarcom,IRepositorioProduto repositorioProduto,IRepositorioMesa repositorioMesa)
         {
             this.repositorioPedido = repositorioPedido;
             this.repositorioGarcom = repositorioGarcom;
             this.repositorioProduto = repositorioProduto;
+            this.repositorioMesa = repositorioMesa;
         }
 
         public override void Adicionar()
@@ -47,7 +50,9 @@ namespace ControleDeBar.ModuloPedidos
             List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
 
             telaPedido.CarregarProdutos(produtosCadastrados);
-   
+
+            List<Mesa> mesasCadastradas = repositorioMesa.SelecionarTodos();
+            telaPedido.CarregarMesas(mesasCadastradas);
 
             DialogResult resultado = telaPedido.ShowDialog();
 
@@ -78,6 +83,8 @@ namespace ControleDeBar.ModuloPedidos
 
             telaPedido.CarregarProdutos(produtosCadastrados);
 
+            List<Mesa> mesasCadastradas = repositorioMesa.SelecionarTodos();
+            telaPedido.CarregarMesas(mesasCadastradas);
 
             int idSelecionado = tabelaPedido.ObterRegistroSelecionado();
 

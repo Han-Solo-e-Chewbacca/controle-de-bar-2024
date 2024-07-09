@@ -1,17 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Dominio.ModuloProdutos;
-using ControleDeBar.Infra.Orm.ModuloProduto;
-using ControleDeBar.ModuloProduto;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ControleDeBar.ModuloPedidos
 {
@@ -32,16 +22,16 @@ namespace ControleDeBar.ModuloPedidos
                 cbGarcom.SelectedItem = value.Garcom;
             }
             //pedido = new Pedido(cbMesa.Text, (Garcom) cbGarcom.SelectedItem, listaProdutos, VTotal, DateTime.Now,true);
-    }
+        }
         private Pedido pedido;
 
 
         private List<Pedido> pedidosCadastrados;
 
-        private bool PedidoTemIdDuplicado()
-        {
-            return pedidosCadastrados.Any(d => d.Id == pedido.Id);
-        }
+        //private bool PedidoTemIdDuplicado()
+        //{
+        //    return pedidosCadastrados.Any(d => d.Id == pedido.Id);
+        //}
 
 
         private void label3_Click(object sender, EventArgs e)
@@ -68,27 +58,34 @@ namespace ControleDeBar.ModuloPedidos
         public void CarregarProdutos(List<Produto> produtos)
         {
             listProdutos.Items.Clear();
-
             foreach (Produto c in produtos)
                 listProdutos.Items.Add(c.Id + "|" + c.Nome + "|" + c.Preco);
         }
 
+        public void CarregarMesas(List<Mesa> mesas)
+        {
+            listProdutos.Items.Clear();
+
+            foreach (Mesa c in mesas)
+                cbMesa.Items.Add(c.Numero);
+        }
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
-          List<Produto> listaProdutos = new List<Produto>();
-            decimal VTotal = 0;   
-            foreach(Produto c in listProdutos.CheckedItems)
+            List<Produto> listaProdutos = new List<Produto>();
+            decimal VTotal = 0;
+            foreach (Produto c in listProdutos.CheckedItems)
                 listaProdutos.Add(c);
 
             foreach (Produto c in listaProdutos)
                 VTotal += c.Preco;
-            
-            pedido = new Pedido(cbMesa.Text,(Garcom)cbGarcom.SelectedItem,listaProdutos,VTotal,DateTime.Now,"Aberto");
+
+            pedido = new Pedido(cbMesa.Text, (Garcom)cbGarcom.SelectedItem, listaProdutos, VTotal, DateTime.Now, "Aberto");
 
             List<string> erros = pedido.Validar();
 
-            if (PedidoTemIdDuplicado())
-                erros.Add("Já existe um pedido com este Id cadastrado, tente utilizar outro!");
+            //if (PedidoTemIdDuplicado())
+            //    erros.Add("Já existe um pedido com este Id cadastrado, tente utilizar outro!");
 
             if (erros.Count > 0)
             {
@@ -96,6 +93,11 @@ namespace ControleDeBar.ModuloPedidos
 
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void listProdutos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
