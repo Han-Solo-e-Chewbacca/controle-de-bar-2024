@@ -59,12 +59,13 @@ namespace ControleDeBar.ModuloPedidos
         {
             listProdutos.Items.Clear();
             foreach (Produto c in produtos)
-                listProdutos.Items.Add(c.Id + "|" + c.Nome + "|" + c.Preco);
+                listProdutos.Items.Add(c);
+
         }
 
         public void CarregarMesas(List<Mesa> mesas)
         {
-            listProdutos.Items.Clear();
+            cbMesa.Items.Clear();
 
             foreach (Mesa c in mesas)
                 cbMesa.Items.Add(c.Numero);
@@ -97,7 +98,9 @@ namespace ControleDeBar.ModuloPedidos
 
         private void listProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            txtVT.Text = "0";
+            foreach (Produto c in listProdutos.CheckedItems)
+                txtVT.Text = Convert.ToString(c.Preco+Convert.ToDecimal(txtVT.Text));
         }
     }
 }

@@ -41,6 +41,7 @@
             grid.RowHeadersWidth = 51;
             grid.Size = new Size(448, 325);
             grid.TabIndex = 0;
+            grid.CellContentClick += grid_CellContentClick;
             // 
             // TabelaPedidoControl
             // 

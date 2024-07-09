@@ -32,7 +32,7 @@ namespace ControleDeBar.ModuloPedidos
             grid.Rows.Clear();
 
             foreach (Pedido g in pedidos)
-                grid.Rows.Add(g.Id, g.Mesa,g.Garcom.Nome,g.Produtos.Count,g.Total,g.Data,g.Situacao);
+                grid.Rows.Add(g.Id, g.Mesa, g.Garcom.Nome, g.Produtos.Count, g.Total, g.Data, g.Situacao);
         }
 
         public int ObterRegistroSelecionado()
@@ -52,6 +52,11 @@ namespace ControleDeBar.ModuloPedidos
                 new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = "Data" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Situacao", HeaderText = "Situação" }
             };
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

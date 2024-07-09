@@ -36,7 +36,11 @@
             cbGarcom = new ComboBox();
             btnCancelar = new Button();
             btnGravar = new Button();
+            groupBox1 = new GroupBox();
             listProdutos = new CheckedListBox();
+            label3 = new Label();
+            txtVT = new TextBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // txtId
@@ -100,7 +104,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(653, 497);
+            btnCancelar.Location = new Point(662, 543);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(110, 46);
             btnCancelar.TabIndex = 10;
@@ -110,7 +114,7 @@
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(537, 497);
+            btnGravar.Location = new Point(546, 543);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(110, 46);
             btnGravar.TabIndex = 9;
@@ -118,21 +122,55 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(listProdutos);
+            groupBox1.Location = new Point(12, 157);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(763, 334);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Pedidos";
+            // 
             // listProdutos
             // 
+            listProdutos.CheckOnClick = true;
+            listProdutos.Dock = DockStyle.Fill;
             listProdutos.FormattingEnabled = true;
-            listProdutos.Location = new Point(36, 185);
+            listProdutos.Location = new Point(3, 23);
             listProdutos.Name = "listProdutos";
-            listProdutos.Size = new Size(717, 290);
-            listProdutos.TabIndex = 11;
+            listProdutos.Size = new Size(757, 308);
+            listProdutos.TabIndex = 0;
             listProdutos.SelectedIndexChanged += listProdutos_SelectedIndexChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(572, 504);
+            label3.Name = "label3";
+            label3.Size = new Size(108, 28);
+            label3.TabIndex = 14;
+            label3.Text = "Valor Total:";
+            // 
+            // txtVT
+            // 
+            txtVT.Enabled = false;
+            txtVT.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtVT.Location = new Point(686, 494);
+            txtVT.Name = "txtVT";
+            txtVT.Size = new Size(89, 38);
+            txtVT.TabIndex = 13;
+            txtVT.Text = "0";
             // 
             // TelaPedidoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(787, 555);
-            Controls.Add(listProdutos);
+            ClientSize = new Size(787, 601);
+            Controls.Add(label3);
+            Controls.Add(txtVT);
+            Controls.Add(groupBox1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(cbGarcom);
@@ -147,6 +185,7 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Pedido";
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,6 +200,9 @@
         private ComboBox cbGarcom;
         private Button btnCancelar;
         private Button btnGravar;
+        private GroupBox groupBox1;
         private CheckedListBox listProdutos;
+        private Label label3;
+        private TextBox txtVT;
     }
 }
