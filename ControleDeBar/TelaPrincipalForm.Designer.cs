@@ -73,28 +73,28 @@
             // garçomToolStripMenuItem
             // 
             garçomToolStripMenuItem.Name = "garçomToolStripMenuItem";
-            garçomToolStripMenuItem.Size = new Size(224, 32);
+            garçomToolStripMenuItem.Size = new Size(178, 32);
             garçomToolStripMenuItem.Text = "Garçom";
             garçomToolStripMenuItem.Click += garçomToolStripMenuItem_Click;
             // 
             // produtos
             // 
             produtos.Name = "produtos";
-            produtos.Size = new Size(224, 32);
+            produtos.Size = new Size(178, 32);
             produtos.Text = "Produtos";
             produtos.Click += produtos_Click;
             // 
             // pedidosToolStripMenuItem1
             // 
             pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
-            pedidosToolStripMenuItem1.Size = new Size(224, 32);
+            pedidosToolStripMenuItem1.Size = new Size(178, 32);
             pedidosToolStripMenuItem1.Text = "Pedidos";
             pedidosToolStripMenuItem1.Click += pedidosToolStripMenuItem1_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
-            mesasToolStripMenuItem.Size = new Size(224, 32);
+            mesasToolStripMenuItem.Size = new Size(178, 32);
             mesasToolStripMenuItem.Text = "Mesas";
             mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
             // 

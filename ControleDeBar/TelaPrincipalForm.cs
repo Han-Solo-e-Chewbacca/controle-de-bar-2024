@@ -105,14 +105,14 @@ namespace ControleDeBar
 
         private void garçomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorGarcom(repositorioGarcom,repositorioPedido);
+            controlador = new ControladorGarcom(repositorioGarcom, repositorioPedido);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void produtos_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorProduto(repositorioProduto,repositorioPedido);
+            controlador = new ControladorProduto(repositorioProduto, repositorioPedido);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -155,6 +155,8 @@ namespace ControleDeBar
             pnlRegistros.Controls.Add(listagemContato);
 
         }
+
+   
     }
 
 
