@@ -17,5 +17,7 @@
         public abstract void ConfirmarPedido();
         public abstract void VisualizarFaturamento();
         public abstract void AdicionarProdutos();
+        public abstract void CarregarRegistrosAbertos();
+        public abstract UserControl ObterListagemAberta();
     }
 }

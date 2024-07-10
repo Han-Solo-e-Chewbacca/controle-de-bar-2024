@@ -44,6 +44,7 @@
             btnConfirmar = new ToolStripButton();
             btnVisualizarFaturamento = new ToolStripButton();
             btnAdicionarProdutos = new ToolStripButton();
+            btnFiltroAbertas = new ToolStripButton();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
             menuStrip1.SuspendLayout();
@@ -72,28 +73,28 @@
             // garçomToolStripMenuItem
             // 
             garçomToolStripMenuItem.Name = "garçomToolStripMenuItem";
-            garçomToolStripMenuItem.Size = new Size(178, 32);
+            garçomToolStripMenuItem.Size = new Size(224, 32);
             garçomToolStripMenuItem.Text = "Garçom";
             garçomToolStripMenuItem.Click += garçomToolStripMenuItem_Click;
             // 
             // produtos
             // 
             produtos.Name = "produtos";
-            produtos.Size = new Size(178, 32);
+            produtos.Size = new Size(224, 32);
             produtos.Text = "Produtos";
             produtos.Click += produtos_Click;
             // 
             // pedidosToolStripMenuItem1
             // 
             pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
-            pedidosToolStripMenuItem1.Size = new Size(178, 32);
+            pedidosToolStripMenuItem1.Size = new Size(224, 32);
             pedidosToolStripMenuItem1.Text = "Pedidos";
             pedidosToolStripMenuItem1.Click += pedidosToolStripMenuItem1_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
-            mesasToolStripMenuItem.Size = new Size(178, 32);
+            mesasToolStripMenuItem.Size = new Size(224, 32);
             mesasToolStripMenuItem.Text = "Mesas";
             mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
             // 
@@ -101,9 +102,9 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
-            statusStrip1.Location = new Point(0, 685);
+            statusStrip1.Location = new Point(0, 687);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1402, 24);
+            statusStrip1.Size = new Size(1402, 22);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -111,13 +112,13 @@
             // 
             statusLabelPrincipal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             statusLabelPrincipal.Name = "statusLabelPrincipal";
-            statusLabelPrincipal.Size = new Size(0, 18);
+            statusLabelPrincipal.Size = new Size(0, 16);
             // 
             // toolStrip1
             // 
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, btnConfirmar, btnVisualizarFaturamento, btnAdicionarProdutos, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, btnConfirmar, btnVisualizarFaturamento, btnAdicionarProdutos, btnFiltroAbertas, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 36);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1402, 27);
@@ -190,6 +191,17 @@
             btnAdicionarProdutos.Text = "Adicionar Produtos";
             btnAdicionarProdutos.Click += btnAdicionarProdutos_Click;
             // 
+            // btnFiltroAbertas
+            // 
+            btnFiltroAbertas.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFiltroAbertas.Enabled = false;
+            btnFiltroAbertas.Image = (Image)resources.GetObject("btnFiltroAbertas.Image");
+            btnFiltroAbertas.ImageTransparentColor = Color.Magenta;
+            btnFiltroAbertas.Name = "btnFiltroAbertas";
+            btnFiltroAbertas.Size = new Size(29, 24);
+            btnFiltroAbertas.Text = "Filtrar Pedidos Abertos";
+            btnFiltroAbertas.Click += btnFiltroAbertas_Click;
+            // 
             // lblTipoCadastro
             // 
             lblTipoCadastro.Name = "lblTipoCadastro";
@@ -200,7 +212,7 @@
             pnlRegistros.Dock = DockStyle.Fill;
             pnlRegistros.Location = new Point(0, 63);
             pnlRegistros.Name = "pnlRegistros";
-            pnlRegistros.Size = new Size(1402, 622);
+            pnlRegistros.Size = new Size(1402, 624);
             pnlRegistros.TabIndex = 4;
             // 
             // TelaPrincipalForm
@@ -249,5 +261,6 @@
         private ToolStripMenuItem mesasToolStripMenuItem;
         private ToolStripButton btnVisualizarFaturamento;
         private ToolStripButton btnAdicionarProdutos;
+        private ToolStripButton btnFiltroAbertas;
     }
 }

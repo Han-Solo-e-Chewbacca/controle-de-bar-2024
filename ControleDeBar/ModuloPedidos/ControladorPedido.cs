@@ -163,7 +163,30 @@ namespace ControleDeBar.ModuloPedidos
 
             return tabelaPedido;
         }
+        public override UserControl ObterListagemAberta()
+        {
+            if (tabelaPedido == null)
+                tabelaPedido = new TabelaPedidoControl();
 
+            CarregarRegistrosAbertos();
+
+            return tabelaPedido;
+        }
+        public override void CarregarRegistrosAbertos()
+        {
+            List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
+            List<Pedido> pedidosAbertos = new List<Pedido>();
+            
+            foreach(Pedido pe in pedidos)
+            {
+                if (pe.Situacao=="Aberto") {
+                    pedidosAbertos.Add(pe);
+                }
+            }
+
+
+            tabelaPedido.AtualizarRegistros(pedidosAbertos);
+        }
         public override void CarregarRegistros()
         {
             List<Pedido> pedidos = repositorioPedido.SelecionarTodos();

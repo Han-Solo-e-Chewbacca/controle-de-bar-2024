@@ -150,5 +150,15 @@ namespace ControleDeBar.ModuloProduto
         {
             throw new NotImplementedException();
         }
+
+        public override void CarregarRegistrosAbertos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override UserControl ObterListagemAberta()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

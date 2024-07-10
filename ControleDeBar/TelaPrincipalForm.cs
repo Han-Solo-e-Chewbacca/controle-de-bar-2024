@@ -66,6 +66,7 @@ namespace ControleDeBar
             btnVisualizarFaturamento.Enabled = controladorSelecionado is ControladorPedido;
             btnConfirmar.Enabled = controladorSelecionado is ControladorPedido;
             btnAdicionarProdutos.Enabled = controladorSelecionado is ControladorPedido;
+            btnFiltroAbertas.Enabled = controladorSelecionado is ControladorPedido;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -143,6 +144,16 @@ namespace ControleDeBar
         private void btnAdicionarProdutos_Click(object sender, EventArgs e)
         {
             controlador.AdicionarProdutos();
+        }
+
+        private void btnFiltroAbertas_Click(object sender, EventArgs e)
+        {
+            UserControl listagemContato = controlador.ObterListagemAberta();
+            listagemContato.Dock = DockStyle.Fill;
+
+            pnlRegistros.Controls.Clear();
+            pnlRegistros.Controls.Add(listagemContato);
+
         }
     }
 
