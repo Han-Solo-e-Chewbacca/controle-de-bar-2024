@@ -11,13 +11,13 @@ namespace ControleDeBar.ModuloProduto
 {
     public class ControladorProduto : ControladorBase
     {
-        public override string TipoCadastro => "Garçom";
+        public override string TipoCadastro => "Produto";
 
-        public override string ToolTipAdicionar => "Cadastrar um novo Garçom";
+        public override string ToolTipAdicionar => "Cadastrar um novo Produto";
 
-        public override string ToolTipEditar => "Editar um Garçom existente";
+        public override string ToolTipEditar => "Editar um Produto existente";
 
-        public override string ToolTipExcluir => "Excluir um Garçom existente";
+        public override string ToolTipExcluir => "Excluir um Produto existente";
 
         TabelaProdutoControl tabelaProduto;
 

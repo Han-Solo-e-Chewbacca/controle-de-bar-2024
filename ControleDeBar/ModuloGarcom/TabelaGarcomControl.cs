@@ -18,10 +18,10 @@ namespace ControleDeBar.ModuloGarcom
         {
             InitializeComponent();
             grid.Columns.AddRange(ObterColunas());
-           
+
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
-            grid.Columns[0].Width = 20;
+            grid.Columns[0].Width = 30;
         }
 
         public void AtualizarRegistros(List<Garcom> garcons)
@@ -44,6 +44,11 @@ namespace ControleDeBar.ModuloGarcom
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" }
             };
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

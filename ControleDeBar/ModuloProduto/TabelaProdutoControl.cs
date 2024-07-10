@@ -24,7 +24,7 @@ namespace ControleDeBar.ModuloProduto
 
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
-            grid.Columns[0].Width = 20;
+            grid.Columns[0].Width = 30;
         }
 
         public void AtualizarRegistros(List<Produto> produtos)

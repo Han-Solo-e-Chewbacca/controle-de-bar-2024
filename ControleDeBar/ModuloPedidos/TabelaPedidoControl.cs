@@ -24,7 +24,7 @@ namespace ControleDeBar.ModuloPedidos
 
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
-            grid.Columns[0].Width = 20;
+            grid.Columns[0].Width = 15;
         }
 
         public void AtualizarRegistros(List<Pedido> pedidos)
