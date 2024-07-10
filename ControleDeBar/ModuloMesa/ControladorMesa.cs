@@ -136,5 +136,20 @@ namespace ControleDeBar.ModuloMesa
 
             tabelaMesa.AtualizarRegistros(mesas);
         }
+
+        public override void ConfirmarPedido()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void VisualizarFaturamento()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AdicionarProdutos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

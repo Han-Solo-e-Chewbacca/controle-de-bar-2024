@@ -71,6 +71,7 @@ namespace ControleDeBar.ModuloPedidos
                 cbMesa.Items.Add(c.Numero);
         }
 
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
             List<Produto> listaProdutos = new List<Produto>();
@@ -100,7 +101,12 @@ namespace ControleDeBar.ModuloPedidos
         {
             txtVT.Text = "0";
             foreach (Produto c in listProdutos.CheckedItems)
-                txtVT.Text = Convert.ToString(c.Preco+Convert.ToDecimal(txtVT.Text));
+                txtVT.Text = Convert.ToString(c.Preco + Convert.ToDecimal(txtVT.Text));
+        }
+
+        private void txtVT_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

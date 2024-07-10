@@ -30,7 +30,7 @@ namespace ControleDeBar.ModuloPedidos
         public void AtualizarRegistros(List<Pedido> pedidos)
         {
             grid.Rows.Clear();
-
+            
             foreach (Pedido g in pedidos)
                 grid.Rows.Add(g.Id, g.Mesa, g.Garcom.Nome, g.Produtos.Count, g.Total, g.Data, g.Situacao);
         }

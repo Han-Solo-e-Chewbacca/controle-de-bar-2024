@@ -130,7 +130,7 @@
             groupBox1.Size = new Size(763, 334);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Pedidos";
+            groupBox1.Text = "Produtos";
             // 
             // listProdutos
             // 
@@ -162,6 +162,7 @@
             txtVT.Size = new Size(89, 38);
             txtVT.TabIndex = 13;
             txtVT.Text = "0";
+            txtVT.TextChanged += txtVT_TextChanged;
             // 
             // TelaPedidoForm
             // 

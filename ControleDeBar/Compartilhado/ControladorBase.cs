@@ -14,5 +14,8 @@
         public abstract void Adicionar();
         public abstract void Editar();
         public abstract void Excluir();
+        public abstract void ConfirmarPedido();
+        public abstract void VisualizarFaturamento();
+        public abstract void AdicionarProdutos();
     }
 }

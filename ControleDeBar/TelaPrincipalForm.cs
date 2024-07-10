@@ -63,6 +63,9 @@ namespace ControleDeBar
             btnAdicionar.Enabled = controladorSelecionado is ControladorBase;
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
+            btnVisualizarFaturamento.Enabled = controladorSelecionado is ControladorPedido;
+            btnConfirmar.Enabled = controladorSelecionado is ControladorPedido;
+            btnAdicionarProdutos.Enabled = controladorSelecionado is ControladorPedido;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -115,7 +118,7 @@ namespace ControleDeBar
 
         private void pedidosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorPedido(repositorioPedido, repositorioGarcom, repositorioProduto,repositorioMesa);
+            controlador = new ControladorPedido(repositorioPedido, repositorioGarcom, repositorioProduto, repositorioMesa);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -125,6 +128,21 @@ namespace ControleDeBar
             controlador = new ControladorMesa(repositorioMesa);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            controlador.ConfirmarPedido();
+        }
+
+        private void btnVisualizarFaturamento_Click(object sender, EventArgs e)
+        {
+            controlador.VisualizarFaturamento();
+        }
+
+        private void btnAdicionarProdutos_Click(object sender, EventArgs e)
+        {
+            controlador.AdicionarProdutos();
         }
     }
 

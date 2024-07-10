@@ -3,6 +3,7 @@ using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Dominio.ModuloProdutos;
+using ControleDeBar.ModuloProduto;
 using GeradorDeTestes.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,6 @@ namespace ControleDeBar.ModuloPedidos
             List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
 
             TelaPedidoForm telaPedido = new TelaPedidoForm(pedidos);
-
             List<Garcom> garconsCadastrados = repositorioGarcom.SelecionarTodos();
 
             telaPedido.CarregarGarcons(garconsCadastrados);
@@ -90,10 +90,10 @@ namespace ControleDeBar.ModuloPedidos
 
             Pedido PedidoSelecionado = repositorioPedido.SelecionarPorId(idSelecionado);
 
-            if (PedidoSelecionado == null)
+            if (PedidoSelecionado == null ||PedidoSelecionado.Situacao=="Fechado")
             {
                 MessageBox.Show(
-                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Você precisa selecionar um valido registro para executar esta ação!",
                     "Aviso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -124,12 +124,12 @@ namespace ControleDeBar.ModuloPedidos
         {
             int idSelecionado = tabelaPedido.ObterRegistroSelecionado();
 
-            Pedido PedidoSelecionada = repositorioPedido.SelecionarPorId(idSelecionado);
+            Pedido PedidoSelecionado = repositorioPedido.SelecionarPorId(idSelecionado);
 
-            if (PedidoSelecionada == null)
+            if (PedidoSelecionado == null || PedidoSelecionado.Situacao == "Fechado")
             {
                 MessageBox.Show(
-                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Você precisa selecionar um valido registro para executar esta ação!",
                     "Aviso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -138,7 +138,7 @@ namespace ControleDeBar.ModuloPedidos
             }
 
             DialogResult resposta = MessageBox.Show(
-                $"Você deseja realmente excluir o registro \"{PedidoSelecionada.Mesa}\" ",
+                $"Você deseja realmente excluir o registro \"{PedidoSelecionado.Mesa}\" ",
                 "Confirmar Exclusão",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
@@ -151,7 +151,7 @@ namespace ControleDeBar.ModuloPedidos
 
             CarregarRegistros();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{PedidoSelecionada.Mesa}\" foi exluído com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{PedidoSelecionado.Mesa}\" foi exluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
@@ -169,6 +169,96 @@ namespace ControleDeBar.ModuloPedidos
             List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
 
             tabelaPedido.AtualizarRegistros(pedidos);
+        }
+
+        public override void ConfirmarPedido()
+        {
+            List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
+
+            int idSelecionado = tabelaPedido.ObterRegistroSelecionado();
+
+            Pedido PedidoSelecionado = repositorioPedido.SelecionarPorId(idSelecionado);
+
+            if (PedidoSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            List<Pedido> pedidosCadastrados = repositorioPedido.SelecionarTodos();
+
+            PedidoSelecionado.Situacao = "Fechado";
+            repositorioPedido.Editar(idSelecionado, PedidoSelecionado);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{PedidoSelecionado.Mesa}\" foi confirmado com sucesso!");
+        }
+
+        public override void VisualizarFaturamento()
+        {
+            List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
+            TelaFaturamentoForm telaFaturamento = new TelaFaturamentoForm(pedidos);
+            DialogResult resultado = telaFaturamento.ShowDialog();
+        }
+
+        public override void AdicionarProdutos()
+        {
+            List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
+
+            
+
+            List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
+            TelaAdicionarProdutosForm telaPedido = new TelaAdicionarProdutosForm(produtosCadastrados);
+
+            telaPedido.CarregarProdutos(produtosCadastrados);
+
+            int idSelecionado = tabelaPedido.ObterRegistroSelecionado();
+
+            Pedido PedidoSelecionado = repositorioPedido.SelecionarPorId(idSelecionado);
+
+            if (PedidoSelecionado == null || PedidoSelecionado.Situacao == "Fechado")
+            {
+                MessageBox.Show(
+                    "Você precisa selecionar um valido registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            List<Pedido> pedidosCadastrados = repositorioPedido.SelecionarTodos();
+
+
+            DialogResult resultado = telaPedido.ShowDialog();
+
+            List<Produto> produtosTela = telaPedido.CarregarNovosPedidos();
+            if (resultado != DialogResult.OK)
+                return;
+
+            foreach (Produto p in produtosTela) {
+                PedidoSelecionado.Produtos.Add(p);
+                            }
+            decimal vtNovo = 0;
+            foreach (Produto p in PedidoSelecionado.Produtos)
+            {
+                vtNovo += p.Preco;            
+            }
+            PedidoSelecionado.Total =vtNovo;
+
+            Pedido registroEditado = PedidoSelecionado;
+            
+            repositorioPedido.Editar(idSelecionado, registroEditado);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{registroEditado.Mesa}\" foi adicionado com sucesso!");
         }
     }
 }

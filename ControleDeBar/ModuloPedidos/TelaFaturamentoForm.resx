@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>202, 17</value>
-  </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>338, 17</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>475, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnVisualizarFaturamento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFOSURBVEhL7ZVtrYQwEEWRgAQkIAEJSEACEnCABCQgAQlI
-        QAISZnNYJpnOdttmw/v3btJAv+bM3JbdSv5Y/4CssoDzPGUcR2nbVpqmkWEY5DiOezavJIDgdV1LVVVB
-        Y6wUkgSQLQHJft932bZNuq67xpgrURKAJQQjsIrMtYoSFQGsHVTyGEAtwhYgVKJjfd/fq9LKHjLBfCN7
-        KilREoCAaNYE1mpKlQXEBHRZlut2AcWuaZru2VBfAVjAJrInkL2WBPS20Vjn9QHgIFnoN6/res3P83z1
-        uWG8Uw1PKmGcd6sAYBfy5CeCMaohENLsvSVYpvusAoDdrAG9NAE/rx8gzSroxRZ4qX3eCixk3J9DFBBr
-        WICojj5nwBiVEFy/em9dMcBmFrsE2piz9qX9SAiLFET2ZK59C/kZEBNBPeRRAFIIt41v6nEAAvL+DxF5
-        AZ/uiNfX/cKJAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnAdicionarProdutos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACCSURBVEhL3dSxDYAwDERRr8j+AzBGiKUzxVXfktPkS+7e
-        gURBXN+z7923wKVL34o+vC59qxqSOvZv/AWO0Egh6wiNFLKO0Egh6wiNFLKO0Egh6wiNFLKO0Egh6wiN
-        FLKO0Egh6wiNFLKOxn92Bavx33XhYx1/Qfeb57XqfPO6q4v4AETLlRFVFNSQAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

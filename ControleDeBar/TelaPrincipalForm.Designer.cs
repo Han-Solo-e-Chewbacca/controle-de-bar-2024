@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
             menuStrip1 = new MenuStrip();
             menuToolStripMenuItem = new ToolStripMenuItem();
             garçomToolStripMenuItem = new ToolStripMenuItem();
             produtos = new ToolStripMenuItem();
             pedidosToolStripMenuItem1 = new ToolStripMenuItem();
+            mesasToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -40,9 +42,10 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             btnConfirmar = new ToolStripButton();
+            btnVisualizarFaturamento = new ToolStripButton();
+            btnAdicionarProdutos = new ToolStripButton();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            mesasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -69,31 +72,38 @@
             // garçomToolStripMenuItem
             // 
             garçomToolStripMenuItem.Name = "garçomToolStripMenuItem";
-            garçomToolStripMenuItem.Size = new Size(224, 32);
+            garçomToolStripMenuItem.Size = new Size(178, 32);
             garçomToolStripMenuItem.Text = "Garçom";
             garçomToolStripMenuItem.Click += garçomToolStripMenuItem_Click;
             // 
             // produtos
             // 
             produtos.Name = "produtos";
-            produtos.Size = new Size(224, 32);
+            produtos.Size = new Size(178, 32);
             produtos.Text = "Produtos";
             produtos.Click += produtos_Click;
             // 
             // pedidosToolStripMenuItem1
             // 
             pedidosToolStripMenuItem1.Name = "pedidosToolStripMenuItem1";
-            pedidosToolStripMenuItem1.Size = new Size(224, 32);
+            pedidosToolStripMenuItem1.Size = new Size(178, 32);
             pedidosToolStripMenuItem1.Text = "Pedidos";
             pedidosToolStripMenuItem1.Click += pedidosToolStripMenuItem1_Click;
+            // 
+            // mesasToolStripMenuItem
+            // 
+            mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
+            mesasToolStripMenuItem.Size = new Size(178, 32);
+            mesasToolStripMenuItem.Text = "Mesas";
+            mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
-            statusStrip1.Location = new Point(0, 675);
+            statusStrip1.Location = new Point(0, 685);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1402, 34);
+            statusStrip1.Size = new Size(1402, 24);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -101,14 +111,13 @@
             // 
             statusLabelPrincipal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             statusLabelPrincipal.Name = "statusLabelPrincipal";
-            statusLabelPrincipal.Size = new Size(75, 28);
-            statusLabelPrincipal.Text = "rodapé";
+            statusLabelPrincipal.Size = new Size(0, 18);
             // 
             // toolStrip1
             // 
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, btnConfirmar, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, btnConfirmar, btnVisualizarFaturamento, btnAdicionarProdutos, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 36);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1402, 27);
@@ -118,6 +127,7 @@
             // btnAdicionar
             // 
             btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAdicionar.Enabled = false;
             btnAdicionar.Image = Properties.Resources.btnAdicionar;
             btnAdicionar.ImageTransparentColor = Color.Magenta;
             btnAdicionar.Name = "btnAdicionar";
@@ -128,6 +138,7 @@
             // btnEditar
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnEditar.Enabled = false;
             btnEditar.Image = Properties.Resources.btnEditar;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
@@ -138,6 +149,7 @@
             // btnExcluir
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnExcluir.Enabled = false;
             btnExcluir.Image = Properties.Resources.btnExcluir;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
@@ -148,11 +160,35 @@
             // btnConfirmar
             // 
             btnConfirmar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnConfirmar.Enabled = false;
             btnConfirmar.Image = Properties.Resources.btnAdicionarItens;
             btnConfirmar.ImageTransparentColor = Color.Magenta;
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(29, 24);
             btnConfirmar.Text = "Confirmar Entrega";
+            btnConfirmar.Click += btnConfirmar_Click;
+            // 
+            // btnVisualizarFaturamento
+            // 
+            btnVisualizarFaturamento.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnVisualizarFaturamento.Enabled = false;
+            btnVisualizarFaturamento.Image = (Image)resources.GetObject("btnVisualizarFaturamento.Image");
+            btnVisualizarFaturamento.ImageTransparentColor = Color.Magenta;
+            btnVisualizarFaturamento.Name = "btnVisualizarFaturamento";
+            btnVisualizarFaturamento.Size = new Size(29, 24);
+            btnVisualizarFaturamento.Text = "Visualizar Faturamento";
+            btnVisualizarFaturamento.Click += btnVisualizarFaturamento_Click;
+            // 
+            // btnAdicionarProdutos
+            // 
+            btnAdicionarProdutos.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAdicionarProdutos.Enabled = false;
+            btnAdicionarProdutos.Image = (Image)resources.GetObject("btnAdicionarProdutos.Image");
+            btnAdicionarProdutos.ImageTransparentColor = Color.Magenta;
+            btnAdicionarProdutos.Name = "btnAdicionarProdutos";
+            btnAdicionarProdutos.Size = new Size(29, 24);
+            btnAdicionarProdutos.Text = "Adicionar Produtos";
+            btnAdicionarProdutos.Click += btnAdicionarProdutos_Click;
             // 
             // lblTipoCadastro
             // 
@@ -164,15 +200,8 @@
             pnlRegistros.Dock = DockStyle.Fill;
             pnlRegistros.Location = new Point(0, 63);
             pnlRegistros.Name = "pnlRegistros";
-            pnlRegistros.Size = new Size(1402, 612);
+            pnlRegistros.Size = new Size(1402, 622);
             pnlRegistros.TabIndex = 4;
-            // 
-            // mesasToolStripMenuItem
-            // 
-            mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
-            mesasToolStripMenuItem.Size = new Size(224, 32);
-            mesasToolStripMenuItem.Text = "Mesas";
-            mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 
@@ -218,5 +247,7 @@
         private ToolStripMenuItem pedidosToolStripMenuItem1;
         private ToolStripLabel lblTipoCadastro;
         private ToolStripMenuItem mesasToolStripMenuItem;
+        private ToolStripButton btnVisualizarFaturamento;
+        private ToolStripButton btnAdicionarProdutos;
     }
 }

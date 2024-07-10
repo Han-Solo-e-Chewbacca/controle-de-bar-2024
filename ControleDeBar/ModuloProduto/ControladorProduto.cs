@@ -135,5 +135,20 @@ namespace ControleDeBar.ModuloProduto
 
             tabelaProduto.AtualizarRegistros(disciplinas);
         }
+
+        public override void ConfirmarPedido()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void VisualizarFaturamento()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AdicionarProdutos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
