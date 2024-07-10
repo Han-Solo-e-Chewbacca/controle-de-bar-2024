@@ -14,34 +14,52 @@ namespace ControleDeBar.ModuloProduto
 {
     public partial class TelaAdicionarProdutosForm : Form
     {
-        public TelaAdicionarProdutosForm(List<Produto> produtos)
+        public TelaAdicionarProdutosForm(List<Produto> produtos,Pedido pedidoSelecionado)
         {
             InitializeComponent();
+        foreach (Produto produto in pedidoSelecionado.Produtos)
+            {
+            listProdutos.Items.Add(produto);
+            }
         }
 
         public List<Produto> CarregarNovosPedidos()
         {
             List<Produto> NovosPedidos = new List<Produto>();
-            foreach (Produto item in listProdutos.CheckedItems)
+            foreach (Produto item in listProdutos.Items)
             {
                 NovosPedidos.Add(item);
             }
-                       
+
             return NovosPedidos;
         }
         public void CarregarProdutos(List<Produto> produtos)
         {
-            listProdutos.Items.Clear();
+            cbProdutos.Items.Clear();
             foreach (Produto c in produtos)
-                listProdutos.Items.Add(c);
+                cbProdutos.Items.Add(c);
 
         }
-        private void listProdutos_SelectedIndexChanged_3(object sender, EventArgs e)
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < Convert.ToInt32(numQTD.Value); i++)
+            {
+                listProdutos.Items.Add(cbProdutos.SelectedItem);
+            }
+            cbProdutos.SelectedItem = null;
             txtVT.Text = "0";
-            foreach (Produto c in listProdutos.CheckedItems)
+            foreach (Produto c in listProdutos.Items)
                 txtVT.Text = Convert.ToString(c.Preco + Convert.ToDecimal(txtVT.Text));
         }
 
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            listProdutos.Items.Remove(listProdutos.SelectedItem);
+
+            txtVT.Text = "0";
+            foreach (Produto c in listProdutos.Items)
+                txtVT.Text = Convert.ToString(c.Preco + Convert.ToDecimal(txtVT.Text));
+        }
     }
 }

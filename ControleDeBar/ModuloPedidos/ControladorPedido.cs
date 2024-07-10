@@ -250,14 +250,13 @@ namespace ControleDeBar.ModuloPedidos
         {
             List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
 
-            
+            int idSelecionado = tabelaPedido.ObterRegistroSelecionado();
 
             List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
-            TelaAdicionarProdutosForm telaPedido = new TelaAdicionarProdutosForm(produtosCadastrados);
+            TelaAdicionarProdutosForm telaPedido = new TelaAdicionarProdutosForm(produtosCadastrados,repositorioPedido.SelecionarPorId(idSelecionado));
 
             telaPedido.CarregarProdutos(produtosCadastrados);
 
-            int idSelecionado = tabelaPedido.ObterRegistroSelecionado();
 
             Pedido PedidoSelecionado = repositorioPedido.SelecionarPorId(idSelecionado);
 
@@ -281,9 +280,8 @@ namespace ControleDeBar.ModuloPedidos
             if (resultado != DialogResult.OK)
                 return;
 
-            foreach (Produto p in produtosTela) {
-                PedidoSelecionado.Produtos.Add(p);
-                            }
+                PedidoSelecionado.Produtos = produtosTela;
+                            
             decimal vtNovo = 0;
             foreach (Produto p in PedidoSelecionado.Produtos)
             {

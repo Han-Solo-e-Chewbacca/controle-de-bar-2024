@@ -37,10 +37,17 @@
             btnCancelar = new Button();
             btnGravar = new Button();
             groupBox1 = new GroupBox();
-            listProdutos = new CheckedListBox();
+            listProdutos = new ListBox();
+            btnRemover = new Button();
+            btnAdicionar = new Button();
+            cbProdutos = new ComboBox();
+            numQTD = new NumericUpDown();
+            label5 = new Label();
+            label6 = new Label();
             label3 = new Label();
             txtVT = new TextBox();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numQTD).BeginInit();
             SuspendLayout();
             // 
             // txtId
@@ -90,7 +97,6 @@
             cbMesa.Name = "cbMesa";
             cbMesa.Size = new Size(151, 28);
             cbMesa.TabIndex = 6;
-            cbMesa.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // cbGarcom
             // 
@@ -125,23 +131,82 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(listProdutos);
-            groupBox1.Location = new Point(12, 157);
+            groupBox1.Controls.Add(btnRemover);
+            groupBox1.Controls.Add(btnAdicionar);
+            groupBox1.Controls.Add(cbProdutos);
+            groupBox1.Controls.Add(numQTD);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Location = new Point(12, 143);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(763, 334);
+            groupBox1.Size = new Size(763, 348);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Produtos";
             // 
             // listProdutos
             // 
-            listProdutos.CheckOnClick = true;
-            listProdutos.Dock = DockStyle.Fill;
             listProdutos.FormattingEnabled = true;
-            listProdutos.Location = new Point(3, 23);
+            listProdutos.Location = new Point(0, 106);
             listProdutos.Name = "listProdutos";
-            listProdutos.Size = new Size(757, 308);
-            listProdutos.TabIndex = 0;
+            listProdutos.Size = new Size(763, 244);
+            listProdutos.TabIndex = 21;
             listProdutos.SelectedIndexChanged += listProdutos_SelectedIndexChanged;
+            // 
+            // btnRemover
+            // 
+            btnRemover.Location = new Point(596, 67);
+            btnRemover.Name = "btnRemover";
+            btnRemover.Size = new Size(135, 29);
+            btnRemover.TabIndex = 20;
+            btnRemover.Text = "Remover";
+            btnRemover.UseVisualStyleBackColor = true;
+            btnRemover.Click += btnRemover_Click;
+            // 
+            // btnAdicionar
+            // 
+            btnAdicionar.Location = new Point(596, 26);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(135, 35);
+            btnAdicionar.TabIndex = 19;
+            btnAdicionar.Text = "Adicionar";
+            btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
+            // 
+            // cbProdutos
+            // 
+            cbProdutos.FormattingEnabled = true;
+            cbProdutos.Location = new Point(136, 33);
+            cbProdutos.Name = "cbProdutos";
+            cbProdutos.Size = new Size(426, 28);
+            cbProdutos.TabIndex = 18;
+            // 
+            // numQTD
+            // 
+            numQTD.Location = new Point(136, 72);
+            numQTD.Name = "numQTD";
+            numQTD.Size = new Size(87, 27);
+            numQTD.TabIndex = 17;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(11, 71);
+            label5.Name = "label5";
+            label5.Size = new Size(119, 28);
+            label5.TabIndex = 16;
+            label5.Text = "Quantidade:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(42, 33);
+            label6.Name = "label6";
+            label6.Size = new Size(88, 28);
+            label6.TabIndex = 15;
+            label6.Text = "Produto:";
             // 
             // label3
             // 
@@ -162,7 +227,6 @@
             txtVT.Size = new Size(89, 38);
             txtVT.TabIndex = 13;
             txtVT.Text = "0";
-            txtVT.TextChanged += txtVT_TextChanged;
             // 
             // TelaPedidoForm
             // 
@@ -187,6 +251,8 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Pedido";
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numQTD).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,8 +268,14 @@
         private Button btnCancelar;
         private Button btnGravar;
         private GroupBox groupBox1;
-        private CheckedListBox listProdutos;
         private Label label3;
         private TextBox txtVT;
+        private Label label5;
+        private Label label6;
+        private Button btnRemover;
+        private Button btnAdicionar;
+        private ComboBox cbProdutos;
+        private NumericUpDown numQTD;
+        private ListBox listProdutos;
     }
 }

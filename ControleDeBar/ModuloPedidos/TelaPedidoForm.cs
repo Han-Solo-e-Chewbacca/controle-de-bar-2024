@@ -28,26 +28,7 @@ namespace ControleDeBar.ModuloPedidos
 
         private List<Pedido> pedidosCadastrados;
 
-        //private bool PedidoTemIdDuplicado()
-        //{
-        //    return pedidosCadastrados.Any(d => d.Id == pedido.Id);
-        //}
 
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         public void CarregarGarcons(List<Garcom> garcons)
         {
             cbGarcom.Items.Clear();
@@ -57,9 +38,9 @@ namespace ControleDeBar.ModuloPedidos
         }
         public void CarregarProdutos(List<Produto> produtos)
         {
-            listProdutos.Items.Clear();
+            cbProdutos.Items.Clear();
             foreach (Produto c in produtos)
-                listProdutos.Items.Add(c);
+                cbProdutos.Items.Add(c);
 
         }
 
@@ -76,7 +57,7 @@ namespace ControleDeBar.ModuloPedidos
         {
             List<Produto> listaProdutos = new List<Produto>();
             decimal VTotal = 0;
-            foreach (Produto c in listProdutos.CheckedItems)
+            foreach (Produto c in listProdutos.Items)
                 listaProdutos.Add(c);
 
             foreach (Produto c in listaProdutos)
@@ -97,14 +78,29 @@ namespace ControleDeBar.ModuloPedidos
             }
         }
 
-        private void listProdutos_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < Convert.ToInt32(numQTD.Value); i++)
+            {
+                listProdutos.Items.Add(cbProdutos.SelectedItem);
+            }
+            cbProdutos.SelectedItem = null;
             txtVT.Text = "0";
-            foreach (Produto c in listProdutos.CheckedItems)
+            foreach (Produto c in listProdutos.Items)
                 txtVT.Text = Convert.ToString(c.Preco + Convert.ToDecimal(txtVT.Text));
         }
 
-        private void txtVT_TextChanged(object sender, EventArgs e)
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            listProdutos.Items.Remove(listProdutos.SelectedItem);
+
+            txtVT.Text = "0";
+            foreach (Produto c in listProdutos.Items)
+                txtVT.Text = Convert.ToString(c.Preco + Convert.ToDecimal(txtVT.Text));
+        }
+
+        private void listProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
