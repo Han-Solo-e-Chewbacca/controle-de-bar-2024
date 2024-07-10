@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloPedidos;
 using GeradorDeTestes.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,12 @@ namespace ControleDeBar.ModuloGarcom
         TabelaGarcomControl tabelaGarcom;
 
         IRepositorioGarcom repositorioGarcom;
+        IRepositorioPedido repositorioPedido;
 
-        public ControladorGarcom(IRepositorioGarcom repositorioGarcom)
+        public ControladorGarcom(IRepositorioGarcom repositorioGarcom,IRepositorioPedido repositorioPedido)
         {
             this.repositorioGarcom = repositorioGarcom;
+            this.repositorioPedido = repositorioPedido;
         }
 
         public override void Adicionar()
@@ -89,6 +92,23 @@ namespace ControleDeBar.ModuloGarcom
             int idSelecionado = tabelaGarcom.ObterRegistroSelecionado();
 
             Garcom garcomSelecionada = repositorioGarcom.SelecionarPorId(idSelecionado);
+            List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
+
+            foreach (Pedido p in pedidos)
+            {
+                if (garcomSelecionada == p.Garcom)
+                {
+                    MessageBox.Show(
+                        "Esse garçom já foi utilizado em algum pedido,logo é impossível sua exclusão!",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+            }
+
 
             if (garcomSelecionada == null)
             {

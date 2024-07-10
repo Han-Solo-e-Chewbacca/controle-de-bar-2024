@@ -1,4 +1,6 @@
 ﻿using ControleDeBar.Dominio.Modulo_Produtos;
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloPedidos;
 using ControleDeBar.Dominio.ModuloProdutos;
 using GeradorDeTestes.WinApp.Compartilhado;
 using System;
@@ -22,10 +24,12 @@ namespace ControleDeBar.ModuloProduto
         TabelaProdutoControl tabelaProduto;
 
         IRepositorioProduto repositorioProduto;
+        IRepositorioPedido repositorioPedido; 
 
-        public ControladorProduto(IRepositorioProduto repositorioProduto)
+        public ControladorProduto(IRepositorioProduto repositorioProduto,IRepositorioPedido repositorioPedido)
         {
             this.repositorioProduto = repositorioProduto;
+            this.repositorioPedido = repositorioPedido;
         }
 
         public override void Adicionar()
@@ -88,8 +92,30 @@ namespace ControleDeBar.ModuloProduto
         public override void Excluir()
         {
             int idSelecionado = tabelaProduto.ObterRegistroSelecionado();
-
             Produto ProdutoSelecionada = repositorioProduto.SelecionarPorId(idSelecionado);
+
+            List<Pedido> pedidos = repositorioPedido.SelecionarTodos();
+
+            foreach (Pedido p in pedidos)
+            {
+
+                foreach(Produto pe in p.Produtos)
+                if (ProdutoSelecionada == pe)
+                {
+                    MessageBox.Show(
+                        "Esse produto já foi utilizado em algum pedido,logo é impossível sua exclusão!",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+            }
+
+
+
+
 
             if (ProdutoSelecionada == null)
             {
