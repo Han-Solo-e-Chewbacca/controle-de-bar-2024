@@ -60,6 +60,20 @@ namespace ControleDeBar.ModuloPedidos
             if (resultado != DialogResult.OK)
                 return;
 
+            List<Pedido> pedidosCadastrados = repositorioPedido.SelecionarTodos();
+            foreach (Pedido p in pedidosCadastrados)
+            {
+                if (p.Situacao == "Aberto" && p.Mesa == telaPedido.Pedido.Mesa)
+                {
+                    MessageBox.Show(
+                 "A mesa selecionada já está com uma pedido em aberto!",
+                 "Aviso",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Warning);
+
+                    return;
+                }
+            }
             Pedido novoRegistro = telaPedido.Pedido;
 
             repositorioPedido.Cadastrar(novoRegistro);
@@ -111,6 +125,8 @@ namespace ControleDeBar.ModuloPedidos
             if (resultado != DialogResult.OK)
                 return;
 
+         
+            
             Pedido registroEditado = telaPedido.Pedido;
 
             repositorioPedido.Editar(idSelecionado, registroEditado);
